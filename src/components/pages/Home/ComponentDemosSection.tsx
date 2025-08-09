@@ -1,6 +1,6 @@
 import React from "react";
 import SectionIntro from "@/components/common/SectionIntro";
-import ButtonsMarquee from "./ButtonsMarquee";
+// import ButtonsMarquee from "./ButtonsMarquee";
 import BentoDemo from "@/components/ui/bento-grid/BentoGrid";
 import { AnimatedListDemo } from "@/components/ui/animated-list/AnimatedList";
 import { AnimatedCircularProgressBarDemo } from "@/components/ui/progress-bar/AnimatedCircularProgressBarDemo";

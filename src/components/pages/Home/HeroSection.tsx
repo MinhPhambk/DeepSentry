@@ -22,7 +22,7 @@ import MotionIcon from "../../icons/MotionIcon";
 import ReactSpringIcon from "../../icons/ReactSpringIcon";
 import ZDogIcon from "../../icons/ZDogIcon";
 import RatingStars from "@/components/nurui/rating-star";
-import UserByCompanies from "@/components/common/UserByCompanies";
+// import UserByCompanies from "@/components/common/UserByCompanies";
 
 const HeroSection = () => {
   return (
