@@ -1,0 +1,57 @@
+---
+title: "border-button"
+description: "A stylish border button component for modern UIs, built with accessibility and  in mind."
+---
+
+<ComponentPreview componentName="borderButton" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  <Cli />
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install dependencies</Step>
+
+<Cli
+  dependencies={[
+    { label: "npm", command: "npm i react-icons" },
+    { label: "pnpm", command: "pnpm add react-icons" },
+    { label: "bun", command: "bun add react-icons" },
+    { label: "yarn", command: "yarn add react-icons" },
+  ]}
+/>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+`components/nurui/border-button.tsx`
+
+<CodeBlock
+  componentName="borderButton"
+  fileName="border-button"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+### Props
+
+| Prop   | Type     | Default | Description                               |
+| ------ | -------- | ------- | ----------------------------------------- |
+| `text` | `string` | `-`     | Text content displayed inside the button. |

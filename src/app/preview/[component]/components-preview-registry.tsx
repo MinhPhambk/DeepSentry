@@ -1,0 +1,195 @@
+import React from "react";
+import dynamic from "next/dynamic";
+
+export const componentsPreviewRegistry: Record<
+  string,
+  { component: React.ComponentType }
+> = {
+  // sections
+  "neobrutalism-faq": {
+    component: dynamic(
+      () => import("@/components/nurui/neobrutalism-faq-demo"),
+    ),
+  },
+  "premium-testimonial": {
+    component: dynamic(
+      () => import("@/components/nurui/premium-testimonial-demo"),
+    ),
+  },
+  "marquee-testimonial": {
+    component: dynamic(
+      () => import("@/components/nurui/marquee-testimonial-demo"),
+    ),
+  },
+  "animated-pricing": {
+    component: dynamic(() =>
+      import("@/components/nurui/animated-pricing-demo").then(
+        (mod) => mod.AnimatedPricingDemo,
+      ),
+    ),
+  },
+  "creative-pricing": {
+    component: dynamic(() =>
+      import("@/components/nurui/creative-pricing-demo").then(
+        (mod) => mod.CreativePricingDemo,
+      ),
+    ),
+  },
+  "grid-feature": {
+    component: dynamic(() => import("@/components/nurui/grid-feature-demo")),
+  },
+  // components
+  "project-showcase": {
+    component: dynamic(
+      () => import("@/components/nurui/project-showcase-demo"),
+    ),
+  },
+  "following-eye": {
+    component: dynamic(() =>
+      import("@/components/nurui/following-eye-demo").then(
+        (mod) => mod.FollowingEyeDemo,
+      ),
+    ),
+  },
+  banner: {
+    component: dynamic(() => import("@/components/nurui/banner-demo")),
+  },
+  "banner-close": {
+    component: dynamic(() => import("@/components/nurui/banner-close-demo")),
+  },
+  story: {
+    component: dynamic(() =>
+      import("@/components/nurui/story-demo").then((mod) => mod.StoryDemo),
+    ),
+  },
+  // buttons
+  "magnet-button": {
+    component: dynamic(() => import("@/components/nurui/magnet-button-demo")),
+  },
+  "gradient-button": {
+    component: dynamic(() => import("@/components/nurui/gradient-button-demo")),
+  },
+  "border-button": {
+    component: dynamic(() => import("@/components/nurui/border-button-demo")),
+  },
+  "shadow-button": {
+    component: dynamic(() => import("@/components/nurui/shadow-button-demo")),
+  },
+  "text-button": {
+    component: dynamic(() =>
+      import("@/components/nurui/text-button-demo").then(
+        (mod) => mod.TextButtonDemo,
+      ),
+    ),
+  },
+  // cards
+  "playing-card": {
+    component: dynamic(() => import("@/components/nurui/playing-card-demo")),
+  },
+  "info-card": {
+    component: dynamic(() =>
+      import("@/components/nurui/info-card-demo").then(
+        (mod) => mod.InfoCardDemo,
+      ),
+    ),
+  },
+  "wave-card": {
+    component: dynamic(() => import("@/components/nurui/wave-card-demo")),
+  },
+  "dynamic-card": {
+    component: dynamic(() =>
+      import("@/components/nurui/dynamic-card-demo").then(
+        (mod) => mod.DynamicCardDemo,
+      ),
+    ),
+  },
+  "spotlight-card": {
+    component: dynamic(() =>
+      import("@/components/nurui/spotlight-card-demo").then(
+        (mod) => mod.SpotLightCardDemo,
+      ),
+    ),
+  },
+  // forms
+  "contact-form": {
+    component: dynamic(() => import("@/components/nurui/contact-form-demo")),
+  },
+  "gaming-form": {
+    component: dynamic(() => import("@/components/nurui/gaming-form-demo")),
+  },
+  "singin-form": {
+    component: dynamic(() =>
+      import("@/components/nurui/singin-form-demo").then(
+        (mod) => mod.SingInFormDemo,
+      ),
+    ),
+  },
+  "flow-form": {
+    component: dynamic(() =>
+      import("@/components/nurui/flow-form-demo").then(
+        (mod) => mod.FlowFormDemo,
+      ),
+    ),
+  },
+  // modals
+  "video-modal": {
+    component: dynamic(() => import("@/components/nurui/video-modal-demo")),
+  },
+  // hero
+  "tech-hero": {
+    component: dynamic(() => import("@/components/nurui/tech-hero-demo")),
+  },
+  "gradient-hero": {
+    component: dynamic(() => import("@/components/nurui/gradient-hero")),
+  },
+  "waves-hero": {
+    component: dynamic(() => import("@/components/nurui/waves-hero-demo")),
+  },
+  "digital-hero": {
+    component: dynamic(() => import("@/components/nurui/digital-hero-demo")),
+  },
+  "research-hero": {
+    component: dynamic(() => import("@/components/nurui/research-hero-demo")),
+  },
+  // cursors
+  "draw-cursor": {
+    component: dynamic(() =>
+      import("@/components/nurui/draw-cursor-demo").then(
+        (mod) => mod.DrawCursorDemo,
+      ),
+    ),
+  },
+  "matrix-cursor": {
+    component: dynamic(() => import("@/components/nurui/matrix-cursor-demo")),
+  },
+  "hacker-cursor": {
+    component: dynamic(() => import("@/components/nurui/hacker-cursor-demo")),
+  },
+  "splash-cursor": {
+    component: dynamic(() => import("@/components/nurui/splash-cursor-demo")),
+  },
+  "terminal-cursor": {
+    component: dynamic(() => import("@/components/nurui/terminal-cursor-demo")),
+  },
+  "code-cursor": {
+    component: dynamic(() => import("@/components/nurui/code-cursor-demo")),
+  },
+  "retro-cursor": {
+    component: dynamic(() => import("@/components/nurui/retro-cursor-demo")),
+  },
+  "money-cursor": {
+    component: dynamic(() => import("@/components/nurui/money-cursor-demo")),
+  },
+  "electric-cursor": {
+    component: dynamic(() => import("@/components/nurui/electric-cursor-demo")),
+  },
+  "tech-cursor": {
+    component: dynamic(() => import("@/components/nurui/tech-cursor-demo")),
+  },
+  "ghost-cursor": {
+    component: dynamic(() => import("@/components/nurui/ghost-cursor-demo")),
+  },
+  "fire-cursor": {
+    component: dynamic(() => import("@/components/nurui/fire-cursor-demo")),
+  },
+};
