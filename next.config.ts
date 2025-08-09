@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "nurui.vercel.app" },
     ],
   },
-  basePath: isProd ? "/DeepSentry" : "",
-  assetPrefix: isProd ? "/DeepSentry/" : "",
+  // basePath: isProd ? "/DeepSentry" : "",
+  // assetPrefix: isProd ? "/DeepSentry/" : "",
   eslint: {
     ignoreDuringBuilds: true,
   },
