@@ -30,7 +30,7 @@ const Footer = () => {
               target="_blank"
               className="cursor-pointer"
             >
-              Ngăn chặn Deepfake
+              Phát hiện Deepfake
             </a>
             <a
               href="/"
@@ -146,13 +146,13 @@ const navigation = [
   },
   {
     id: 2,
-    name: "Ngăn chặn Deepfake",
+    name: "Phát hiện Deepfake",
     url: "/docs/wave-card",
   },
   {
     id: 3,
-    name: "Bản dùng thử",
-    url: "/playground",
+    name: "Nâng cấp gói",
+    url: "/billing",
   },
   {
     id: 4,

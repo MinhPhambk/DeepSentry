@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && type nul > out/.nojekyll && git add out -f && git commit -m \"Deploy\" && git push --prefix out origin gh-pages"
+    "deploy": "next build && type nul > out/.nojekyll && echo deepsentry.cloud > out/CNAME && git add out -f && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "@babel/core": "^7.27.4",

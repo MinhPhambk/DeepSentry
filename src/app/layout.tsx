@@ -26,12 +26,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: {
       default: "DeepSentry",
-      template: "%s | DeepSentry",
+      template: "%s",
     },
     icons: {
       icon: [
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon.ico", type: "image/x-icon" },
+        { url: "/favicon.png", type: "image/png" }
       ],
     },
     description:

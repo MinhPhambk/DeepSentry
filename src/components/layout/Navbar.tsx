@@ -56,7 +56,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden xl:flex items-center gap-3.5">
-          <RoundedButton
+          {/* <RoundedButton
             href="https://discord.gg/XzAh8V3S"
             icon={
               <FaDiscord className="text-2xl text-[var(--white-color)] dark:text-[var(--primary-color)]" />
@@ -68,7 +68,7 @@ const Navbar = () => {
               <FaGithub className="text-2xl text-[var(--white-color)] dark:text-[var(--primary-color)] " />
             }
             iconInfo={stars || 0}
-          />
+          /> */}
 
           <ThemeSwitcher />
         </div>
@@ -88,13 +88,13 @@ const navigation = [
   },
   {
     id: 2,
-    name: "Ngăn chặn Deepfake",
+    name: "Phát hiện Deepfake",
     url: "/docs/wave-card",
   },
   {
     id: 3,
-    name: "Bản dùng thử",
-    url: "/playground",
+    name: "Nâng cấp gói",
+    url: "/billing",
   },
   {
     id: 4,

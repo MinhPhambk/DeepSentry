@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
-  output: "export", // Static export cho GitHub Pages
+  output: "export",
   images: {
-    unoptimized: true, // Bắt buộc khi export tĩnh
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "i.ibb.co" },
