@@ -89,7 +89,7 @@ const navigation = [
   {
     id: 2,
     name: "Phát hiện Deepfake",
-    url: "/docs/wave-card",
+    url: "/preview",
   },
   {
     id: 3,

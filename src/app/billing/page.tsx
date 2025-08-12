@@ -6,14 +6,13 @@ import {
 export const metadata = {
   title: "Nâng cấp gói",
   description:
-    "Chọn gói phù hợp với nhu cầu bảo mật của bạn. Phát hiện Deepfake, mã độc và giả mạo khuôn mặt với công nghệ AI tiên tiến.",
+    "Chọn gói phù hợp với nhu cầu bảo mật của bạn. Phát hiện Deepfake và giả mạo khuôn mặt với công nghệ AI tiên tiến.",
   keywords: [
     "Phát hiện Deepfake",
     "Bảo mật AI",
     "Chống giả mạo khuôn mặt", 
     "API bảo mật",
     "Websocket real-time",
-    "Phát hiện mã độc",
     "DeepSentry",
   ],
 };
@@ -41,7 +40,6 @@ const myPricingPlans: PricingCardProps[] = [
       "50.000 lượt kiểm tra/tháng",
       "API + WebSocket siêu tốc",
       "Phát hiện Deepfake ảnh & video",
-      "Quét mã độc real-time",
       "Bảng điều khiển phân tích",
       "Hỗ trợ 24/7"
     ],
@@ -76,7 +74,7 @@ const page = () => {
           Nâng cấp <span className="text-cyan-400">gói của bạn</span>
         </>
       }
-      subtitle="Phát hiện Deepfake, mã độc và giả mạo khuôn mặt trong thời gian thực. API siêu nhanh với WebSocket cho mọi quy mô doanh nghiệp."
+      subtitle="Phát hiện Deepfake và giả mạo khuôn mặt trong thời gian thực. API siêu nhanh với WebSocket cho mọi quy mô doanh nghiệp."
       plans={myPricingPlans}
       showAnimatedBackground={true}
     />

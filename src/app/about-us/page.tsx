@@ -3,13 +3,11 @@ import AboutUsHeroSection from "@/components/pages/about-us/AboutUsHeroSection";
 import FaqSection from "@/components/pages/about-us/FaqSection";
 import ImageTabsSection from "@/components/pages/about-us/ImageTabsSection";
 import StackingCardsSection from "@/components/pages/about-us/StackingCardsSection";
-import StatesCountupSection from "@/components/pages/about-us/StatesCountupSection";
-import { WorldMapAnimationSection } from "@/components/pages/about-us/WorldMapAnimationSection";
 
 export const metadata = {
-  title: "About Us",
+  title: "Giới thiệu",
   description:
-    "Learn more about the Nurui, our mission, and how we build the future of UI components.",
+    "Giới thiệu về DeepSentry - Giải pháp bảo mật đa dạng và hiệu quả cho các ứng dụng web hiện đại. Tích hợp công nghệ tiên tiến để phát hiện và ngăn chặn các mối đe dọa an ninh mạng.",
 };
 
 const page = () => {
@@ -17,8 +15,6 @@ const page = () => {
     <main className="section-gap">
       <AboutUsHeroSection />
       <ImageTabsSection />
-      <StatesCountupSection />
-      <WorldMapAnimationSection />
       <StackingCardsSection />
       <FaqSection />
       <NewsLetterSection />

@@ -22,7 +22,7 @@ const AnimateInput: FC<IProps> = ({
     const target = e.target as HTMLFormElement;
     const email = (target.email as HTMLInputElement).value;
     if (email) {
-      toast.success("Email submitted successfully!", {
+      toast.success("Email của bạn đã được lưu lại!", {
         style: {
           background: "#1b1d2b",
           color: "#fff",

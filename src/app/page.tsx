@@ -1,13 +1,11 @@
-import AllComponentSection from "@/components/pages/Home/AllComponentSection";
-import ComponentDemosSection from "@/components/pages/Home/ComponentDemosSection";
+import FeaturesSection from "@/components/pages/Home/FeaturesSection";
 import HeroSection from "@/components/pages/Home/HeroSection";
 
 const Home = () => {
   return (
     <main className="section-gap">
       <HeroSection />
-      <AllComponentSection />
-      <ComponentDemosSection />
+      <FeaturesSection />
     </main>
   );
 };

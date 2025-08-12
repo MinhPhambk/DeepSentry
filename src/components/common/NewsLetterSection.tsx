@@ -12,8 +12,8 @@ const NewsLetterSection = () => {
         </p>
         <AnimateInput
           className="w-full max-w-2xl mt-2"
-          onBlurTitle="subscribe to our newsletter"
-          onFocusTitle="We won't spam you!"
+          onBlurTitle="Đăng ký nhận tin tức mới nhất từ chúng tôi"
+          onFocusTitle="Chúng tôi sẽ không làm phiền bạn!"
           buttonTitle={newsLetter?.subscribe_button.label}
         />
       </div>
@@ -24,22 +24,22 @@ const NewsLetterSection = () => {
 export default NewsLetterSection;
 
 const newsLetter = {
-  title: "Subscribe to our newsletter",
+  title: "Đăng ký nhận tin tức về DeepSentry",
   description:
-    "Join our newsletter for regular updates from nurui UI. No spam ever.",
+    "Nhận thông báo mới nhất về giải pháp bảo mật AI của DeepSentry – bảo vệ bạn khỏi Deepfake và giả mạo khuôn mặt.",
   subscribe_button: {
-    label: "Subscribe",
+    label: "Đăng ký",
     action: "subscribe",
   },
   input_field: {
-    placeholder: "subscribe to our newsletter",
+    placeholder: "Đăng ký nhận tin tức mới nhất từ chúng tôi",
     onFocus: {
       action: "setPlaceholder",
-      value: "We won't spam you!",
+      value: "Chúng tôi sẽ không làm phiền bạn!",
     },
     onBlur: {
       action: "setPlaceholder",
-      value: "subscribe to our newsletter",
+      value: "Đăng ký nhận tin tức mới nhất từ chúng tôi",
     },
   },
 };

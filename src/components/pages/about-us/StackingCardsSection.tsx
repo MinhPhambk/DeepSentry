@@ -21,14 +21,14 @@ export default function StackingCardsSection() {
     >
       <SectionIntro
         title={{
-          highLiteWords: "Stands Out",
-          normalWords: "Why Nurui",
+          highLiteWords: "DeepSentry?",
+          normalWords: "Điểm đặc biệt của",
           highlightColor: "text-[var(--secondary-color)]",
         }}
         sectionGap="pb-2.5 xl:pb-3"
-        description="nurui delivers elegant, modular UI components built for speed and scalability.
-        nurui focuses on minimalist design, intuitive use, and developer experience.
-        nurui is powered by an open-source community with a future-ready vision."
+        description="DeepSentry ứng dụng trí tuệ nhân tạo tiên tiến để phát hiện và 
+        ngăn chặn deepfake và tấn công giả mạo khuôn mặt. Chúng tôi mang đến 
+        sự an tâm và bảo mật tối đa cho cá nhân và doanh nghiệp."
       />
       <StackingCards
         totalCards={cards.length}
@@ -71,33 +71,33 @@ export default function StackingCardsSection() {
 
 const cards = [
   {
-    title: "Our Mission",
+    title: "Sứ mệnh rõ ràng",
     description:
-      "To simplify UI development by providing developers with elegant, modular components that promote speed, consistency, and scalability across every project.",
+      "Bảo vệ người dùng trước các mối đe dọa AI ngày càng tinh vi, từ deepfake đến tấn công mạng phức tạp.",
     icon: missionAnimationData,
   },
   {
-    title: "Design Philosophy",
+    title: "Công nghệ AI tiên tiến",
     description:
-      "nurui blends minimalism with functionality each component is crafted with care, focusing on clean aesthetics and purposeful interactions.",
+      "Sử dụng các mô hình học sâu và hệ thống phát hiện đa tầng để phân tích, định danh và chặn đứng các nội dung giả mạo.",
     icon: designAnimationData,
   },
   {
-    title: "Developer Experience",
+    title: "Bảo mật toàn diện",
     description:
-      "We obsess over DX. That means clear docs, predictable APIs, smart defaults, and zero unnecessary friction from install to production.",
+      "Kết hợp nhiều lớp phòng thủ: phân tích dữ liệu thời gian thực, giám sát liên tục và phản ứng nhanh với mối nguy.",
     icon: developerAnimationData,
   },
   {
-    title: "Open Source",
+    title: "Trải nghiệm người dùng thân thiện",
     description:
-      "nurui is built with and for the community. We're open-source, transparent, and always eager to learn and grow with developers worldwide.",
+      "Thiết kế giao diện dễ sử dụng, hiển thị cảnh báo rõ ràng và cung cấp báo cáo chi tiết giúp người dùng hiểu và xử lý sự cố.",
     icon: communityAnimationData,
   },
   {
-    title: "Future Vision",
+    title: "Cộng đồng & Hợp tác",
     description:
-      "We're not just building components we're creating an ecosystem. Expect design systems, plugin support, and more in our future roadmap.",
+      "Kết nối với các nhà nghiên cứu, chuyên gia bảo mật và cộng đồng mã nguồn mở để liên tục nâng cấp giải pháp.",
     icon: visionAnimationData,
   },
 ];

@@ -22,18 +22,17 @@ const FaqSection = () => {
 
   return (
     <section className="container flex flex-col xl:flex-row gap-10 xl:gap-20">
-      {/* title and action's button */}
+      {/* Tiêu đề và nút chọn danh mục */}
       <div className="xl:w-1/3 space-y-5 text-center xl:text-start">
-        <h3 className="text-4xl xl:text-5xl font-bold">FAQs</h3>
+        <h3 className="text-4xl xl:text-5xl font-bold">Câu hỏi thường gặp</h3>
         <p className="text-xl">
-          Everything you need to know about features, membership, and
-          troubleshooting.
+          Tất cả thông tin bạn cần biết về tính năng, bảo mật và cách sử dụng DeepSentry.
         </p>
         <div className="flex flex-wrap justify-center xl:justify-start gap-x-4 gap-y-5 pt-1">
           {faqsData.map((data) => roundedButton(data?.id, data?.category))}
         </div>
       </div>
-      {/* question and answer */}
+      {/* Danh sách câu hỏi */}
       <div className="xl:w-2/3 space-y-5">
         {faqsData?.[activeCategoryKey - 1]?.questions?.map((faqData, i) => (
           <QuestionAnswer
@@ -56,183 +55,171 @@ export default FaqSection;
 
 const faqsData = [
   {
-    category: "Getting Started",
+    category: "Bắt đầu",
     id: 1,
     questions: [
       {
         number: 1,
-        question: "What is NurUI?",
+        question: "DeepSentry là gì?",
         answer:
-          "NurUI is a modern, developer-focused UI component library for React and Next.js. It provides reusable, customizable components designed to speed up your development workflow.",
+          "DeepSentry là nền tảng bảo mật AI giúp phát hiện deepfake và ngăn chặn giả mạo khuôn mặt, bảo vệ người dùng và doanh nghiệp khỏi các mối đe dọa số."
       },
       {
         number: 2,
-        question: "How do I install NurUI?",
+        question: "Làm sao để cài đặt DeepSentry?",
         answer:
-          "You can install components directly using our CLI with `npx nurui add <component-name>`. This will generate the component in your project folder.",
+          "Bạn có thể tích hợp DeepSentry qua API hoặc cài đặt phần mềm máy chủ/ứng dụng tùy theo nhu cầu. Tài liệu hướng dẫn chi tiết có sẵn trên trang web chính thức."
       },
       {
         number: 3,
-        question: "Do I need to configure anything after installation?",
+        question: "Có cần cấu hình gì sau khi cài đặt không?",
         answer:
-          "Minimal setup may be required, such as Tailwind configuration or importing global styles. Check the documentation for exact steps.",
+          "Chỉ cần cấu hình thông tin API, quyền truy cập và các tuỳ chọn cảnh báo. DeepSentry sẽ tự động tối ưu cho môi trường của bạn."
       },
       {
         number: 4,
-        question: "Is NurUI free to use?",
+        question: "DeepSentry có miễn phí không?",
         answer:
-          "Yes, all core components of NurUI are completely free and open-source. A Pro version with additional templates and tools is planned.",
+          "DeepSentry cung cấp gói miễn phí với các tính năng cơ bản. Các gói nâng cao có thêm tính năng phân tích chuyên sâu và báo cáo chi tiết."
       },
       {
         number: 5,
-        question: "Which frameworks are supported?",
+        question: "DeepSentry hỗ trợ nền tảng nào?",
         answer:
-          "NurUI is optimized for React and Next.js. Support for additional frameworks is under consideration.",
-      },
-    ],
+          "DeepSentry hỗ trợ tích hợp trên web, ứng dụng di động, hệ thống máy chủ và nền tảng đám mây."
+      }
+    ]
   },
   {
-    category: "Integration",
+    category: "Tích hợp",
     id: 2,
     questions: [
       {
         number: 1,
-        question: "Can I use NurUI with Tailwind CSS?",
+        question: "DeepSentry có thể tích hợp với hệ thống hiện tại không?",
         answer:
-          "Yes. NurUI is built to work perfectly with Tailwind CSS. All components use utility-first classes for easy customization.",
+          "Có. DeepSentry hỗ trợ API và SDK cho nhiều ngôn ngữ, dễ dàng tích hợp vào hệ thống sẵn có."
       },
       {
         number: 2,
-        question: "Is NurUI compatible with design tools like Figma?",
+        question: "Có hỗ trợ kết nối với phần mềm bảo mật khác không?",
         answer:
-          "Figma kits are in development to help bridge the gap between design and code. Stay tuned for updates.",
+          "Có, DeepSentry tương thích với nhiều nền tảng bảo mật và SIEM như Splunk, Elastic Security."
       },
       {
         number: 3,
-        question: "Does NurUI support TypeScript?",
+        question: "DeepSentry có hỗ trợ đa ngôn ngữ không?",
         answer:
-          "Yes. NurUI components are fully typed and provide excellent support for TypeScript with type safety and autocomplete.",
+          "Có. Hệ thống hỗ trợ nhiều ngôn ngữ để dễ dàng triển khai toàn cầu."
       },
       {
         number: 4,
-        question: "How customizable are the components?",
+        question: "Có thể tùy chỉnh tính năng AI không?",
         answer:
-          "NurUI components are fully customizable. You can use props, Tailwind utility classes, or directly modify the generated component code.",
+          "Hoàn toàn có thể. Bạn có thể điều chỉnh mức độ nhạy, bộ lọc và thuật toán phù hợp với nhu cầu."
       },
       {
         number: 5,
-        question: "Can I use NurUI with server-side rendering?",
+        question: "Có thể triển khai trên đám mây và tại chỗ cùng lúc không?",
         answer:
-          "Absolutely. NurUI is SSR-friendly and integrates smoothly with frameworks like Next.js.",
-      },
-    ],
+          "Có. DeepSentry hỗ trợ triển khai hybrid để tối ưu hiệu suất và bảo mật."
+      }
+    ]
   },
   {
-    category: "Components",
+    category: "Tính năng",
     id: 3,
     questions: [
       {
         number: 1,
-        question: "What components are available in NurUI?",
+        question: "DeepSentry phát hiện deepfake như thế nào?",
         answer:
-          "NurUI includes a wide range of components such as buttons, modals, cards, inputs, tabs, accordions, and animation elements — with more added regularly.",
+          "Hệ thống sử dụng mô hình AI phân tích đặc điểm khuôn mặt, giọng nói và dữ liệu hình ảnh để phát hiện dấu hiệu giả mạo."
       },
       {
         number: 2,
-        question: "Are components mobile-friendly?",
+        question: "Có cảnh báo theo thời gian thực không?",
         answer:
-          "Yes, every component in NurUI is responsive by default and follows a mobile-first approach.",
+          "Có. Khi phát hiện mối đe dọa, hệ thống gửi cảnh báo ngay lập tức qua email, SMS hoặc dashboard."
       },
       {
         number: 3,
-        question: "Can I animate components?",
+        question: "Có hỗ trợ báo cáo chi tiết không?",
         answer:
-          "Yes. Many components include animations out of the box, and NurUI supports integration with libraries like Framer Motion for advanced animation needs.",
+          "Có. Báo cáo bao gồm thông tin phân tích, thống kê mối đe dọa và khuyến nghị xử lý."
       },
       {
         number: 4,
-        question: "Can I create or extend custom components?",
+        question: "Hệ thống có đảm bảo quyền riêng tư không?",
         answer:
-          "Definitely. NurUI encourages you to extend and create your own components using our base structure and design tokens.",
-      },
-      {
-        number: 5,
-        question: "Is accessibility supported?",
-        answer:
-          "Yes. NurUI follows accessibility best practices, including ARIA roles and keyboard navigation where appropriate.",
-      },
-    ],
+          "DeepSentry tuân thủ tiêu chuẩn bảo mật quốc tế và không lưu trữ dữ liệu cá nhân quá thời gian cần thiết."
+      }
+    ]
   },
   {
-    category: "Documentation",
+    category: "Tài liệu & Hỗ trợ",
     id: 4,
     questions: [
       {
         number: 1,
-        question: "Where can I find NurUI documentation?",
+        question: "Tài liệu hướng dẫn ở đâu?",
         answer:
-          "The full documentation, including setup guides and examples, is available on the NurUI website.",
+          "Bạn có thể truy cập tài liệu đầy đủ, bao gồm hướng dẫn cài đặt và ví dụ tích hợp, trên trang web DeepSentry."
       },
       {
         number: 2,
-        question: "Is there support available?",
+        question: "Có hỗ trợ kỹ thuật không?",
         answer:
-          "Yes. You can get community support on GitHub and Discord. Premium support will be available with NurUI Pro.",
+          "Có. Chúng tôi cung cấp hỗ trợ qua email, chat trực tiếp và cộng đồng trên Discord."
       },
       {
         number: 3,
-        question: "Do you maintain a changelog?",
+        question: "Có thể đóng góp phát triển không?",
         answer:
-          "Yes. Every update is tracked in a public changelog available on GitHub.",
+          "Có. Chúng tôi chào đón mọi đóng góp thông qua GitHub."
       },
       {
         number: 4,
-        question: "Can I contribute to NurUI?",
+        question: "Có bản demo hoặc mẫu thử không?",
         answer:
-          "Yes, contributions are welcome! Fork the repo, make your changes, and open a pull request.",
-      },
-      {
-        number: 5,
-        question: "Are there starter templates or previews?",
-        answer:
-          "Yes. NurUI includes starter templates and v0 live previews to help you quickly build and test UI ideas.",
-      },
-    ],
+          "Có. DeepSentry cung cấp demo trực tuyến và gói thử nghiệm để bạn kiểm tra trước khi triển khai."
+      }
+    ]
   },
   {
-    category: "CLI & Licensing",
+    category: "Bản quyền & Giấy phép",
     id: 5,
     questions: [
       {
         number: 1,
-        question: "Does NurUI have a CLI?",
+        question: "DeepSentry có mã nguồn mở không?",
         answer:
-          "Yes! NurUI comes with a powerful CLI. You can scaffold components into your project with commands like `npx nurui add button`.",
+          "Phiên bản lõi của DeepSentry là mã nguồn mở, giấy phép Apache. Một số tính năng nâng cao thuộc gói thương mại."
       },
       {
         number: 2,
-        question: "Does the CLI support TS to JS conversion?",
+        question: "Có thể dùng trong dự án thương mại không?",
         answer:
-          "Yes. The CLI detects your project type and generates components in either TypeScript or JavaScript based on your setup.",
+          "Có. Bạn có thể sử dụng DeepSentry trong cả dự án cá nhân và thương mại."
       },
       {
         number: 3,
-        question: "Is NurUI open-source?",
+        question: "Có gói bản quyền vĩnh viễn không?",
         answer:
-          "Yes. NurUI is open-source and MIT-licensed, which means you can use it freely in personal and commercial projects.",
+          "Có. Gói doanh nghiệp có thể mua bản quyền vĩnh viễn với hỗ trợ nâng cấp trong 3 năm."
       },
       {
         number: 4,
-        question: "Will there be a Pro version?",
+        question: "Có giới hạn số lượng người dùng không?",
         answer:
-          "Yes. A Pro version with premium templates, animations, and design resources is planned for the near future.",
+          "Tùy gói dịch vụ. Gói miễn phí giới hạn 1 người dùng, các gói trả phí hỗ trợ không giới hạn số lượng người dùng."
       },
       {
         number: 5,
-        question: "Can I use NurUI in client and commercial projects?",
+        question: "Có chính sách hoàn tiền không?",
         answer:
-          "Yes, you can use both the free and Pro versions of NurUI in client, SaaS, and commercial applications.",
-      },
-    ],
-  },
+          "Có. Bạn có thể yêu cầu hoàn tiền trong vòng 14 ngày nếu không hài lòng."
+      }
+    ]
+  }
 ];

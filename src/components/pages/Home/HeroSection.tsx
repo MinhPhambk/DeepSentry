@@ -17,12 +17,11 @@ import CollMode from "../../ui/cool-mode/CollMode";
 import { GrOptimize } from "react-icons/gr";
 import GsapIcon from "../../icons/GsapIcon";
 import ThreeJsIcon from "../../icons/ThreeJsIcon";
-import AnimeJsIcon from "../../icons/AnimeJsIcon";
+import DockerIcon from "../../icons/DockerIcon";
 import MotionIcon from "../../icons/MotionIcon";
 import ReactSpringIcon from "../../icons/ReactSpringIcon";
 import ZDogIcon from "../../icons/ZDogIcon";
 import RatingStars from "@/components/nurui/rating-star";
-// import UserByCompanies from "@/components/common/UserByCompanies";
 
 const HeroSection = () => {
   return (
@@ -59,16 +58,15 @@ const HeroSection = () => {
           </h1>
           {/* description */}
           <p className="lg:text-xl max-w-2xl text-[var(--opacity-text-color)] text-balance">
-            React and Next.js based UI library with CLI scaffolding, TS-to-JS
-            conversion, and v0 live previews.
+            Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, 
+            tích hợp API và suy luận thời gian thực.
           </p>
           {/* features */}
           <div className="bg-[var(--glass-color)] shadow-lg dark:shadow-none px-6 py-3 rounded-2xl hidden md:flex items-center gap-4 capitalize">
             {[
-              { icon: <BiMobileVibration />, label: "responsive" },
-              { icon: <MdOutlineDarkMode />, label: "Dark mode" },
-              { icon: <BiCustomize />, label: "customizable" },
-              { icon: <GrOptimize />, label: "Lightweight" },
+              { icon: <BiMobileVibration />, label: "Dễ dàng tích hợp" },
+              { icon: <BiCustomize />, label: "Khả năng tùy chỉnh mạnh mẽ" },
+              { icon: <GrOptimize />, label: "Độ chính xác cao" },
             ].map(({ icon, label }, i) => (
               <LabelWithIcon key={i} icon={icon} label={label} />
             ))}
@@ -108,7 +106,7 @@ const HeroSection = () => {
                 <RatingStars />
                 <p className="ml-3 text-[var(--opacity-text-color)] font-semibold">
                   Được tin dùng bởi hơn{" "}
-                  <span className="text-[var(--text-primary-color)]">20+</span>{" "}
+                  <span className="text-[var(--text-primary-color)]">20</span>{" "}
                   chuyên gia
                 </p>
               </div>
@@ -130,7 +128,7 @@ const HeroSection = () => {
           </div>
           <div className="flex flex-col justify-around relative right-2">
             <MotionIcon className="icon-animation12" />
-            <AnimeJsIcon className="icon-animation13 relative left-7" />
+            <DockerIcon className="icon-animation13 relative left-7" />
             <ReactSpringIcon className="icon-animation14" />
           </div>
         </div>

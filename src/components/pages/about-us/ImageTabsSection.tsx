@@ -29,12 +29,12 @@ const ImageTabsSection = () => {
     <section className="container h-full">
       <SectionIntro
         title={{
-          highLiteWords: "Why Choose Us",
-          normalWords: "At Nurui",
+          highLiteWords: "Tại sao nên chọn chúng tôi?",
+          normalWords: "DeepSentry - ",
           highlightColor: "text-[var(--primary-color)]",
         }}
         sectionNameColor="text-[var(--primary-color)]"
-        description="At Nurui, we prioritize clean code, seamless tools, and fast integration. Our solutions reduce complexity, boost development speed, and ensure consistency."
+        description="DeepSentry ưu tiên độ chính xác, khả năng tích hợp nhanh và tính bảo mật. Nền tảng của chúng tôi giúp phát hiện deepfake và giả mạo khuôn mặt một cách hiệu quả, giảm rủi ro và bảo vệ người dùng."
       />
 
       <TabsProvider
@@ -69,20 +69,13 @@ const ImageTabsSection = () => {
               <div className="space-y-3 xl:space-y-4">
                 <h2 className="text-xl capitalize text-center lg:text-start">
                   <span className="border-b-2 border-white/35 pb-0.5">
-                    What We o
+                    Giải pháp
                   </span>
-                  fers
                 </h2>
                 <h1 className="text-3xl xl:text-5xl font-semibold max-w-2xl mx-auto lg:mx-0 text-center lg:text-start">
-                  {tab?.Content?.heading
-                    .split(" ")
-                    .slice(0, tab?.Content?.heading?.split(" ")?.length - 3)
-                    .join(" ")}{" "}
+                  {tab?.Content?.heading.split(" ").slice(0, tab?.Content?.heading?.split(" ")?.length - 3).join(" ")} {" "}
                   <span className="text-[var(--primary-color)]">
-                    {tab?.Content?.heading
-                      .split(" ")
-                      .slice(tab?.Content?.heading?.split(" ")?.length - 3)
-                      .join(" ")}
+                    {tab?.Content?.heading.split(" ").slice(tab?.Content?.heading?.split(" ")?.length - 3).join(" ")}
                   </span>
                 </h1>
                 <p className="xl:text-xl max-w-3xl mx-auto lg:mx-0 text-[var(--opacity-text-color)] text-center lg:text-start">
@@ -105,90 +98,45 @@ const tabs = [
     id: "1",
     tabList: {
       icon: designAnimationData,
-      title: "UI Component Library",
-      description:
-        "Install and use production ready components instantly via CLI.",
+      title: "Bảo mật AI đa tầng",
+      description: "Phát hiện deepfake, giả mạo khuôn mặt và malware trong một nền tảng duy nhất.",
     },
     Content: {
-      title: "What We Provide",
-      heading: "Production-ready UI components accessible with one command.",
+      heading: "Giải pháp AI bảo mật toàn diện cho nhận diện và phân tích mối đe dọa",
       description:
-        "Nurui CLI-based component library empowers developers to instantly scaffold fully functional UI components into their projects. Designed for speed, consistency, and scalability, our components follow modern best practices and can be customized easily.",
+        "DeepSentry cung cấp mô-đun AI chuyên biệt để phát hiện deepfake và malware. Hệ thống có thể triển khai tại chỗ hoặc trên cloud, hỗ trợ API/SDK giúp tích hợp nhanh vào quy trình hiện tại của doanh nghiệp.",
       tabs: [
         {
-          id: "install",
-          title: "Easy Installation",
+          id: "real-time-detection",
+          title: "Phát hiện thời gian thực",
           content:
-            "Get started with a single CLI command. Just run `npx nurui install` to bring in the latest version of components directly into your codebase without setup hassle.",
+            "Sử dụng AI tối ưu để phát hiện deepfake ngay khi dữ liệu được xử lý.",
           items: [
-            {
-              icon: <FaTerminal />,
-              title: "One Command Setup",
-              description:
-                "Run a single CLI command to install everything you need.",
-            },
-            {
-              icon: <FaRocket />,
-              title: "Instant Access",
-              description:
-                "Start using components immediately without additional setup.",
-            },
-            {
-              icon: <FaTools />,
-              title: "No Config Needed",
-              description:
-                "Pre-configured components ready to use in any environment.",
-            },
+            { icon: <FaRocket />, title: "Phản hồi tức thì", description: "Kết quả phát hiện trong mili-giây." },
+            { icon: <FaTools />, title: "Dễ triển khai", description: "Cấu hình đơn giản, hỗ trợ nhiều môi trường." },
+            { icon: <FaLayerGroup />, title: "Đa lớp bảo mật", description: "Kết hợp phân tích tĩnh và động." },
           ],
         },
         {
-          id: "customize",
-          title: "Customization",
+          id: "custom-rules",
+          title: "Tùy chỉnh & mở rộng",
           content:
-            "All components come with built-in support for theming and customization. Whether you're using Tailwind, SCSS, or vanilla CSS our styles adapt to your stack seamlessly.",
+            "Cho phép tạo rule tùy chỉnh, thêm mô-đun AI mới và cập nhật theo nhu cầu.",
           items: [
-            {
-              icon: <FaCogs />,
-              title: "Theme Support",
-              description:
-                "Apply your brand theme easily using config options.",
-            },
-            {
-              icon: <FaLayerGroup />,
-              title: "Flexible Styles",
-              description: "Supports Tailwind, SCSS, CSS Modules, and more.",
-            },
-            {
-              icon: <FaPuzzlePiece />,
-              title: "Composable Design",
-              description: "Build custom UIs by combining modular components.",
-            },
+            { icon: <FaCogs />, title: "Rule Engine", description: "Tạo luật phát hiện riêng cho từng hệ thống." },
+            { icon: <FaPuzzlePiece />, title: "Mở rộng AI", description: "Bổ sung mô hình AI mới dễ dàng." },
+            { icon: <FaTerminal />, title: "API mở", description: "Kết nối với các hệ thống khác qua API/SDK." },
           ],
         },
         {
           id: "performance",
-          title: "Performance",
+          title: "Hiệu năng & tối ưu",
           content:
-            "Components are tree-shakable, lightweight, and optimized for accessibility and responsiveness, ensuring fast load times and inclusive UX across devices.",
+            "Hệ thống tối ưu hóa cho độ chính xác cao và độ trễ thấp, phù hợp với khối lượng dữ liệu lớn.",
           items: [
-            {
-              icon: <FaReact />,
-              title: "React Optimized",
-              description:
-                "Seamlessly integrates with React for dynamic and responsive UI rendering.",
-            },
-            {
-              icon: <FaCode />,
-              title: "Lightweight Codebase",
-              description:
-                "Every component is designed with performance in mind, minimizing bundle size.",
-            },
-            {
-              icon: <FaRocket />,
-              title: "Fast Load Times",
-              description:
-                "Optimized for speed, our components load instantly across all devices.",
-            },
+            { icon: <FaCogs />, title: "Tối ưu AI", description: "Sử dụng mô hình nhẹ nhưng chính xác." },
+            { icon: <FaCode />, title: "Kiến trúc gọn nhẹ", description: "Giảm thiểu tài nguyên tiêu thụ." },
+            { icon: <FaRocket />, title: "Xử lý tốc độ cao", description: "Đáp ứng nhu cầu thời gian thực." },
           ],
         },
       ],
@@ -198,88 +146,45 @@ const tabs = [
     id: "2",
     tabList: {
       icon: developerAnimationData,
-      title: "Developer Experience",
-      description:
-        "Enhance productivity with tools that prioritize code quality and speed.",
+      title: "Trải nghiệm nhà phát triển",
+      description: "Công cụ và API thân thiện, dễ tích hợp và quản lý.",
     },
     Content: {
-      title: "What We Provide",
-      heading: "Developer-first tools to accelerate UI development.",
+      heading: "Bộ công cụ hỗ trợ tích hợp AI bảo mật nhanh chóng và hiệu quả",
       description:
-        "Nurui is built for developers who value clean, modular code and efficient workflows. From strict TypeScript support to flexible integration options, our tools help you stay focused on building features, not boilerplate.",
+        "DeepSentry cung cấp API, SDK, và tài liệu đầy đủ để nhà phát triển nhanh chóng triển khai và mở rộng. Mọi tính năng được thiết kế hướng đến sự đơn giản và hiệu quả.",
       tabs: [
         {
-          id: "typescript",
-          title: "TypeScript",
+          id: "api-sdk",
+          title: "API & SDK",
           content:
-            "All components are fully typed with TypeScript, offering intelligent autocompletion and safer code in modern editors like VSCode.",
+            "Tích hợp AI phát hiện deepfake và malware chỉ với vài dòng code.",
           items: [
-            {
-              icon: <FaCode />,
-              title: "Full Typing",
-              description:
-                "Type-safe components for robust and predictable code.",
-            },
-            {
-              icon: <FaLaptopCode />,
-              title: "Editor IntelliSense",
-              description:
-                "Get real-time suggestions and docs inside your IDE.",
-            },
-            {
-              icon: <FaReact />,
-              title: "TS + React",
-              description:
-                "Designed to work flawlessly with React and TSX files.",
-            },
+            { icon: <FaCode />, title: "API REST", description: "Gọi API đơn giản và bảo mật." },
+            { icon: <FaLaptopCode />, title: "SDK đa nền tảng", description: "Hỗ trợ nhiều ngôn ngữ lập trình." },
+            { icon: <FaTools />, title: "Ví dụ sẵn có", description: "Mẫu code để triển khai nhanh." },
           ],
         },
         {
           id: "cli-tools",
-          title: "CLI Tools",
+          title: "Công cụ CLI",
           content:
-            "Beyond installation, the nurui CLI supports component generation, config updates, and live previews making your dev workflow smoother and faster.",
+            "Quản lý cấu hình, triển khai và kiểm thử hệ thống ngay từ terminal.",
           items: [
-            {
-              icon: <FaTerminal />,
-              title: "Component Generator",
-              description:
-                "Quickly scaffold new components with prebuilt templates.",
-            },
-            {
-              icon: <FaCogs />,
-              title: "Smart Config",
-              description: "Easily update and manage your component settings.",
-            },
-            {
-              icon: <FaRocket />,
-              title: "Live Preview",
-              description: "See component changes in real-time while coding.",
-            },
+            { icon: <FaTerminal />, title: "Triển khai nhanh", description: "Cài đặt và chạy chỉ với 1 lệnh." },
+            { icon: <FaCogs />, title: "Quản lý cấu hình", description: "Tùy chỉnh hệ thống dễ dàng." },
+            { icon: <FaRocket />, title: "Kiểm thử tức thì", description: "Thử nghiệm và nhận kết quả ngay." },
           ],
         },
         {
           id: "frameworks",
-          title: "Framework Support",
+          title: "Hỗ trợ Framework",
           content:
-            "Seamlessly integrates with React, Next.js, and other popular frameworks. We also offer guides and templates to help you get started instantly.",
+            "Tương thích với nhiều nền tảng như React, Next.js, Spring Boot, Flask...",
           items: [
-            {
-              icon: <FaReact />,
-              title: "React",
-              description: "First-class support for React applications.",
-            },
-            {
-              icon: <FaCode />,
-              title: "Next.js",
-              description:
-                "Works perfectly with Next.js dynamic routing and SSR.",
-            },
-            {
-              icon: <FaTools />,
-              title: "Starter Templates",
-              description: "Boilerplates available for major frameworks.",
-            },
+            { icon: <FaReact />, title: "React/Next.js", description: "Tích hợp giao diện phát hiện trực tiếp." },
+            { icon: <FaCode />, title: "Backend frameworks", description: "Hỗ trợ Java, Python, Node.js..." },
+            { icon: <FaTools />, title: "Template mẫu", description: "Cung cấp boilerplate cho nhiều hệ thống." },
           ],
         },
       ],

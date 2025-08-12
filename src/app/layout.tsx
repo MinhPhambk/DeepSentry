@@ -34,52 +34,28 @@ export const generateMetadata = async (): Promise<Metadata> => {
       ],
     },
     description:
-      "React and Next.js based UI library with CLI scaffolding, TS-to-JS conversion, and v0 live previews.",
+      "Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
     applicationName: "DeepSentry",
-    creator: "Md Afsar Mahmud",
+    creator: "Pham Ngoc Minh",
     authors: [
       {
-        name: "Md Afsar Mahmud",
-        url: "https://md-afsar-mahmud.netlify.app",
+        name: "Pham Ngoc Minh",
+        url: "https://www.linkedin.com/in/pham-ngoc-minh-896713232/",
       },
     ],
     keywords: [
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "motion/react",
-      "gsap",
-      "web animation",
-      "shadcn components",
-      "animation components for react",
-      "add component by cli",
-      "tailwind css animation components",
+      "Phát hiện Deepfake",
+      "Bảo mật AI",
+      "Chống giả mạo khuôn mặt",
+      "API bảo mật",
+      "Websocket real-time",
+      "DeepSentry",
     ],
     openGraph: {
       title: "DeepSentry",
       description:
-        "React and Next.js based UI library with CLI scaffolding, TS-to-JS conversion, and v0 live previews.",
-      url: "https://nurui.vercel.app",
-      siteName: "Nurui",
-      locale: "en_US",
-      type: "website",
-      images: [
-        {
-          url: "https://nurui.vercel.app/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "NUR-UI OG Image",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Nurui",
-      description:
-        "React and Next.js based UI library with CLI scaffolding, TS-to-JS conversion, and v0 live previews.",
-      images: [{ url: "https://nurui.vercel.app/og-image.png" }],
-      creator: "@md_afsar_mahmud",
-      // site: "@nurui",
+        "Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
+      url: "deepsentry.cloud",
     },
   };
 };

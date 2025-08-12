@@ -19,67 +19,44 @@ const Footer = () => {
           <div className="space-y-3 lg:space-y-4 xl:space-y-6 max-w-80 col-span-full">
             <Nurui textSize="text-2xl lg:text-3xl" />
             <p>
-              Giải pháp bảo mật trí tuệ nhân tạo tiên tiến, bảo vệ bạn trước deepfake, tấn công giả mạo khuôn mặt và các mối đe dọa mã độc.
+              Giải pháp bảo mật trí tuệ nhân tạo tiên tiến, bảo vệ bạn trước deepfake và tấn công giả mạo khuôn mặt.
             </p>
           </div>
 
           <nav className="space-y-4 max-w-80 flex flex-col">
             <h6 className="font-semibold text-lg">Các sản phẩm</h6>
             <a
-              href="/"
+              href="/preview"
               target="_blank"
               className="cursor-pointer"
             >
               Phát hiện Deepfake
             </a>
             <a
-              href="/"
+              href="/preview"
               target="_blank"
               className="cursor-pointer"
             >
               Phát hiện giả mạo khuôn mặt
             </a>
-            <a
-              href="/"
-              target="_blank"
-              className="cursor-pointer"
-            >
-              Phát hiện mã độc
-            </a>
           </nav>
-
-          {/* <nav className="space-y-4 max-w-80 flex flex-col">
-            <h6 className="font-semibold text-lg">Company</h6>
-            <a
-              href="https://nurui.vercel.app/about-us"
-              className="cursor-pointer"
-            >
-              About
-            </a>
-            <a
-              href="https://nurui.vercel.app/playground"
-              className="cursor-pointer"
-            >
-              Playground
-            </a>
-          </nav> */}
 
           <nav className="space-y-4 max-w-80 flex flex-col">
             <h6 className="font-semibold text-lg">Khám phá</h6>
             <a
-              href="https://nurui.vercel.app/docs/introduction"
+              href="/about-us"
               className="cursor-pointer"
             >
               Giới thiệu
             </a>
             <a
-              href="https://nurui.vercel.app/docs/installation"
+              href="/docs/installation"
               className="cursor-pointer"
             >
               Hướng dẫn sử dụng
             </a>
             <a
-              href="https://nurui.vercel.app/docs/components"
+              href="https://www.facebook.com/profile.php?id=61576988226742"
               className="cursor-pointer"
             >
               Về chúng tôi
@@ -147,7 +124,7 @@ const navigation = [
   {
     id: 2,
     name: "Phát hiện Deepfake",
-    url: "/docs/wave-card",
+    url: "/preview",
   },
   {
     id: 3,

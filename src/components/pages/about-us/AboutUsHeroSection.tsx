@@ -3,11 +3,11 @@ import CollMode from "@/components/ui/cool-mode/CollMode";
 import LinkWithProgress from "@/components/common/LinkWithProgress";
 
 const features = [
-  "One Command Setup",
-  "Lightweight Codebase",
-  "Responsive",
-  "Customizable Component",
-  "Open Source",
+  "Phát hiện deepfake thời gian thực",
+  "Ngăn chặn giả mạo khuôn mặt & liveness detection",
+  "Phát hiện malware",
+  "Tích hợp nhanh qua API / Socket",
+  "Giải thích quyết định bằng AI & báo cáo chi tiết",
 ];
 
 const particles = [
@@ -31,23 +31,19 @@ const AboutUsHeroSection = () => {
   return (
     <section className="bg-white dark:bg-[var(--glass-color)] lg:border border-[var(--border-color)] px-5 xl:px-0 pt-7 xl:pt-14 lg:mx-10 xl:mx-20 lg:mt-6 xl:mt-10 lg:rounded-2xl">
       <div className="max-w-4xl mx-auto text-center xl:mb-16 pb-7 xl:pb-0">
-        <h3 className="text-[var(--primary-color)] text-xl font-medium">
-          About us
-        </h3>
+        <h3 className="text-[var(--primary-color)] text-xl font-medium">Khám phá DeepSentry</h3>
 
         <h1
           className="text-3xl xl:text-5xl font-semibold mb-6"
           style={{ lineHeight: 1.2 }}
         >
-          So how did nurui
-          <span className="text-[var(--primary-color)]"> come to be?</span>
+          Nền tảng bảo mật tích hợp trí tuệ nhân tạo nhằm ngăn chặn  
+          <span className="text-[var(--primary-color)]"> Deepfake và giả mạo khuôn mặt</span>
         </h1>
 
         <p className="xl:text-xl text-[var(--opacity-text-color)] dark:text-white/70 max-w-2xl mx-auto mb-6">
-          Nurui was born from the vision of simplifying UI development for
-          modern web applications. Our goal is to empower developers with
-          high-quality, reusable components that speed up workflow, reduce
-          repetitive tasks, and ensure consistency across projects.
+          Chúng tôi giúp doanh nghiệp giảm rủi ro gian lận, bảo vệ trải nghiệm người dùng và
+          đáp ứng yêu cầu tuân thủ với báo cáo dễ hiểu và tích hợp nhanh.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mb-10 max-w-2xl mx-auto">
@@ -57,9 +53,9 @@ const AboutUsHeroSection = () => {
         </div>
 
         <CollMode options={{ particle: particles }}>
-          <LinkWithProgress href="/docs/installation">
+          <LinkWithProgress href="/docs/get-started">
             <button className="px-6 py-3 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] rounded-xl flex items-center mx-auto text-black font-semibold">
-              Get Started
+              Bắt đầu ngay
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 ml-2"
