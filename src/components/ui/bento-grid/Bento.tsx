@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
-import OpenInV0Button from "@/components/common/OpenInV0Button";
 import FullScreenPreview from "@/components/common/FullScreenPreview";
 import CLICommandButton from "@/components/common/CLICommandButton";
 import Link from "next/link";
@@ -23,7 +22,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
-        "grid container auto-rows-[22rem] grid-cols-4 gap-4",
+        "grid container auto-rows-[25rem] grid-cols-4 gap-4",
         className,
       )}
       {...props}
@@ -44,7 +43,7 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
+      "group relative col-span-3 flex flex-col justify-between rounded-xl",
       // light styles
       "bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
       // dark styles
@@ -54,9 +53,8 @@ const BentoCard = ({
     {...props}
   >
     <div className="z-50">
-      <CLICommandButton className="absolute right-36 top-2" />
-      <FullScreenPreview className="absolute right-[101px] top-2" />
-      <OpenInV0Button className="absolute right-2 top-2" />
+      <CLICommandButton className="absolute right-12 top-2" />
+      <FullScreenPreview  className="absolute right-2 top-2" />
     </div>
     <div>{background}</div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
@@ -77,7 +75,7 @@ const BentoCard = ({
         href={props?.href}
         className="flex items-center text-sm pointer-events-auto hover:bg-[var(--glass-color-2)] p-2 rounded-xl"
       >
-        <span>View</span>
+        <span>Trải nghiệm thử</span>
         <ArrowRightIcon className="ms-2 h-4 w-4" />
       </Link>
     </div>

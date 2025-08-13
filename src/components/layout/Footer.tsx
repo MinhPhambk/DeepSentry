@@ -97,9 +97,11 @@ const Footer = () => {
           </div>
           <p className="text-[--copy-right-color]">
             © {new Date().getFullYear()} Bản quyền thuộc về{" "}
-            <span className="text-[var(--primary-color)] font-semibold">
-              AI & Cybersecurity Team
-            </span>
+            <a href="https://www.facebook.com/profile.php?id=61576988226742">
+              <span className="text-[var(--primary-color)] font-semibold hover:underline cursor-pointer transition-all duration-200">
+                AI & Cybersecurity Team
+              </span>
+            </a>
             .
           </p>
         </div>

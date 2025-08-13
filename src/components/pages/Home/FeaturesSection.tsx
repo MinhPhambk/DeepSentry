@@ -1,19 +1,11 @@
 import React from "react";
 import SectionIntro from "@/components/common/SectionIntro";
 import BentoDemo from "@/components/ui/bento-grid/BentoGrid";
-import { AnimatedListDemo } from "@/components/ui/animated-list/AnimatedList";
-import { AnimatedCircularProgressBarDemo } from "@/components/ui/progress-bar/AnimatedCircularProgressBarDemo";
-import { TerminalDemo } from "@/components/ui/terminal/TerminalDemo";
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/components/nurui/marque";
-import { GradientGridHero } from "@/components/nurui/gradient-grid-hero";
-import GlowingCard from "@/components/nurui/glowing-card";
-import ShinyCardDemo from "@/components/nurui/shiny-card-demo";
-import { FollowingEye } from "@/components/nurui/following-eye";
+import GlowingCardWithBackground from "@/components/nurui/glowing-card";
 
 const FeaturesSection = () => {
   return (
-    <section>
+    <section className="pb-12">
       <SectionIntro
         title={{
           fullHighLightColor: "text-[var(--secondary-color)]",
@@ -34,21 +26,25 @@ export default FeaturesSection;
 
 const featuresDataOne = [
   {
-    name: "Glowing Card",
-    description: "Interactive glowing UI card",
-    href: "/docs/glowing-card",
+    name: "Phát hiện Deepfake",
+    description: "Phát hiện các video và ảnh Deepfake bằng công nghệ AI tiên tiến.",
+    href: "/",
     className: "col-span-full xl:col-span-2",
     background: (
-      <GlowingCard className="absolute left-1/2 -translate-x-1/2 -top-6 h-[400px] w-full scale-75 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)]" />
+      <GlowingCardWithBackground 
+        className="absolute -top-0 xl:-top-6 h-auto w-full transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)]"
+        backgroundImage="/deepfake.png" />
     ),
   },
   {
-    name: "Glowing Card",
-    description: "Interactive glowing UI card",
-    href: "/docs/glowing-card",
+    name: "Chống giả mạo khuôn mặt",
+    description: "Bảo vệ hệ thống của bạn khỏi các cuộc tấn công giả mạo khuôn mặt.",
+    href: "/",
     className: "col-span-full xl:col-span-2",
     background: (
-      <GlowingCard className="absolute left-1/2 -translate-x-1/2 -top-6 h-[400px] w-full scale-75 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)]" />
+      <GlowingCardWithBackground 
+        className="absolute -top-0 xl:-top-6 h-auto w-full transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)]"
+        backgroundImage="/facespoof.png" />
     ),
   },
 ];

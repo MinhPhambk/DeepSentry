@@ -1,11 +1,39 @@
 "use client";
-import IClassName from "@/types/types";
+import React from 'react';
 
-export default function GlowingCard({ className }: IClassName) {
+interface IGlowingCardProps {
+  className?: string;
+  backgroundImage?: string;
+  children?: React.ReactNode;
+  title?: string;
+  subtitle?: string;
+}
+
+export default function GlowingCardWithBackground({ 
+  className = "", 
+  backgroundImage="",
+  children,
+  title,
+  subtitle
+}: IGlowingCardProps) {
   return (
     <div className={className}>
-      <div className={"card"}>
-        I glow :)
+      <div className="card">
+        {/* Background overlay để tăng độ tương phản */}
+        {backgroundImage && <div className="background-overlay" />}
+        
+        {/* Content */}
+        <div className="card-content">
+          {children || (
+            <>
+              {title && <h2 className="card-title">{title}</h2>}
+              {subtitle && <p className="card-subtitle">{subtitle}</p>}
+              {!title && !subtitle && !children}
+            </>
+          )}
+        </div>
+        
+        {/* Glowing border effect */}
         <div className="glow" />
       </div>
 
@@ -25,19 +53,62 @@ export default function GlowingCard({ className }: IClassName) {
         .card {
           position: relative;
           overflow: hidden;
-          width: min(14.5em, 80vmin);
-          aspect-ratio: 1;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1.5;
           border-radius: 0.5em;
 
           display: grid;
           place-self: center;
           place-content: center;
-          padding: 0.5em;
           color: #ededed;
           font: clamp(1em, 2vw + 2vh, 2em) sans-serif;
           text-align: center;
           text-transform: uppercase;
           text-wrap: balance;
+          
+          ${backgroundImage ? `
+            background-image: url('${backgroundImage}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          ` : ''}
+        }
+
+        .background-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.3) 100%
+          );
+          z-index: 1;
+        }
+
+        .card-content {
+          position: relative;
+          z-index: 2;
+          ${backgroundImage ? `
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: white;
+          ` : ''}
+        }
+
+        .card-title {
+          font-size: clamp(1.2em, 2.5vw + 1vh, 1.8em);
+          font-weight: bold;
+          margin: 0 0 0.5em 0;
+          letter-spacing: 1px;
+        }
+
+        .card-subtitle {
+          font-size: clamp(0.8em, 1.5vw + 0.5vh, 1em);
+          margin: 0;
+          opacity: 0.9;
+          font-weight: 300;
+          text-transform: none;
         }
 
         .glow {
