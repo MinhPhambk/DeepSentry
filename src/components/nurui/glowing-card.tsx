@@ -55,7 +55,7 @@ export default function GlowingCardWithBackground({
           overflow: hidden;
           width: 100%;
           height: auto;
-          aspect-ratio: 1.5;
+          aspect-ratio: 1.8;
           border-radius: 0.5em;
 
           display: grid;

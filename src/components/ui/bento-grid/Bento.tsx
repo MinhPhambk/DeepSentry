@@ -22,8 +22,9 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
-        "grid container auto-rows-[25rem] grid-cols-4 gap-4",
+        "grid container grid-cols-4 gap-4 auto-rows-[19rem] sm:auto-rows-[20rem] md:auto-rows-[30rem] lg:auto-rows-[30rem] xl:auto-rows-[22rem]",
         className,
+        "bento-md-range",
       )}
       {...props}
     >
