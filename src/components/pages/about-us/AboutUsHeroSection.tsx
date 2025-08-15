@@ -5,7 +5,6 @@ import LinkWithProgress from "@/components/common/LinkWithProgress";
 const features = [
   "Phát hiện deepfake thời gian thực",
   "Ngăn chặn giả mạo khuôn mặt & liveness detection",
-  "Phát hiện malware",
   "Tích hợp nhanh qua API / Socket",
   "Giải thích quyết định bằng AI & báo cáo chi tiết",
 ];

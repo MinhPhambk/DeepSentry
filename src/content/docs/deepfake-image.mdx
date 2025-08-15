@@ -1,0 +1,175 @@
+---
+title: "Phát hiện Deepfake"
+description: "Hướng dẫn tích hợp API phát hiện Deepfake cho hình ảnh và video."
+---
+
+# Phát hiện Deepfake
+
+###### Tích hợp tính năng phát hiện Deepfake với độ chính xác cao vào ứng dụng của bạn.
+
+<Steps>
+
+<Step>Cài đặt thư viện phụ thuộc</Step>
+
+<Cli
+  dependencies={[
+    { label: "npm", command: "npm i axios axios-retry @msgpack/msgpack" },
+    { label: "pnpm", command: "pnpm add axios axios-retry @msgpack/msgpack" },
+    { label: "bun", command: "bun add axios axios-retry @msgpack/msgpack" },
+    { label: "yarn", command: "yarn add axios axios-retry @msgpack/msgpack" },
+  ]}
+/>
+
+<Step>Tạo hàm phát hiện Deepfake</Step>
+
+<CodeBlock
+code={`export async function detectDF(
+  source: HTMLImageElement | HTMLVideoElement,
+  canvasRef: HTMLCanvasElement,
+  pingRef: Ref<number>,
+  accuracyRef: Ref<number | null>,
+  labelRef: Ref<'Real' | 'Fake' | null>,
+  parameters: Record<string, any>,
+  callback: () => void = () => { }
+): Promise<void> {
+  try {
+    accuracyRef.value = null
+    labelRef.value = null
+
+    // Xóa canvas
+    const ctxRaw = canvasRef.getContext('2d')
+    if (!ctxRaw) return
+    const widthRaw = source instanceof HTMLVideoElement ? source.videoWidth : source.naturalWidth
+    const heightRaw = source instanceof HTMLVideoElement ? source.videoHeight : source.naturalHeight
+    canvasRef.width = widthRaw
+    canvasRef.height = heightRaw
+    ctxRaw.clearRect(0, 0, canvasRef.width, canvasRef.height)
+
+    // Tạo canvas để xử lý
+    const canvas = document.createElement("canvas")
+    const width = source instanceof HTMLVideoElement ? source.videoWidth : source.naturalWidth
+    const height = source instanceof HTMLVideoElement ? source.videoHeight : source.naturalHeight
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext("2d")
+    if (!ctx) throw new Error("Không thể lấy context 2D từ canvas")
+    ctx.drawImage(source, 0, 0, width, height)
+
+    // Chuyển sang Blob
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Không thể chuyển canvas sang Blob"))), "image/jpeg")
+    })
+
+    // Cấu hình
+    const config = {
+      "model": "df",
+      "inp_size": parameters.inpSize.value,
+      "mask_alpha": parameters.alphaBlend.value
+    }
+
+    // Gửi yêu cầu
+    const formData = new FormData()
+    formData.append("files", blob, "image.jpg")
+    formData.append("configs", JSON.stringify(config))
+
+    const start = performance.now()
+    const response = await axios.post(URL_PROCESS, formData, { 
+      headers: { 'Content-Type': 'multipart/form-data' } 
+    })
+    const end = performance.now()
+    pingRef.value = Math.round(end - start)
+
+    // Lấy kết quả
+    const task_id = response.data[0]['task_id']
+    const result = (await fetchTaskResult(task_id)).res
+    
+    let acc_real = result.real * 100
+    let acc_fake = result.fake * 100
+    acc_real = parseFloat(acc_real.toFixed(2))
+    acc_fake = parseFloat(acc_fake.toFixed(2))
+
+    if (acc_real > acc_fake) {
+      labelRef.value = 'Real'
+      accuracyRef.value = acc_real
+    } else {
+      labelRef.value = 'Fake'
+      accuracyRef.value = acc_fake
+    }
+    
+    if (result) renderMask(result, canvasRef)
+  } catch (error) {
+    console.error("⚠️ Lỗi phát hiện:", error)
+  } finally {
+    callback()
+  }
+}`}
+language="typescript"
+/>
+
+<Step>Cách sử dụng</Step>
+
+<CodeBlock
+code={`import { detectDF } from './api/detection'
+
+// Trong component của bạn
+const handleDetectDeepfake = async () => {
+  const imageElement = document.getElementById('input-image') as HTMLImageElement
+  const canvasElement = document.getElementById('result-canvas') as HTMLCanvasElement
+  
+  const parameters = {
+    inpSize: { value: 256 },
+    alphaBlend: { value: 0.8 }
+  }
+
+  await detectDF(
+    imageElement,
+    canvasElement,
+    pingRef,
+    accuracyRef,
+    labelRef,
+    parameters,
+    () => console.log('Hoàn tất phát hiện')
+  )
+}`}
+language="typescript"
+/>
+
+<Step>Xử lý kết quả</Step>
+
+<CodeBlock
+code={`// Trong component Vue/React
+const accuracyRef = ref<number | null>(null)
+const labelRef = ref<'Real' | 'Fake' | null>(null)
+
+// Sau khi gọi detectDF
+watchEffect(() => {
+  if (labelRef.value && accuracyRef.value) {
+    console.log(\`Kết quả: \${labelRef.value} - Độ chính xác: \${accuracyRef.value}%\`)
+    
+    if (labelRef.value === 'Fake' && accuracyRef.value > 80) {
+      alert('⚠️ Phát hiện Deepfake với độ tin cậy cao!')
+    }
+  }
+})`}
+language="typescript"
+/>
+
+</Steps>
+
+## Tham số
+
+| Tham số | Kiểu | Mặc định | Mô tả |
+|-----------|------|---------|-------------|
+| `inpSize` | `number` | `256` | Kích thước đầu vào cho mô hình (256, 512) |
+| `alphaBlend` | `number` | `0.8` | Độ trong suốt khi phủ mask (0.0 - 1.0) |
+
+## Định dạng phản hồi
+
+<CodeBlock
+code={`{
+  "real": 0.15,     // Xác suất ảnh thật (0-1)
+  "fake": 0.85,     // Xác suất Deepfake (0-1)
+  "mask": "base64..." // Mask vùng được chỉnh sửa
+}`}
+language="json"
+/>

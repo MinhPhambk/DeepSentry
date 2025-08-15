@@ -47,7 +47,7 @@ const ComponentsNavbar = () => {
         </>
         <VaulDrawer />
         <div className="flex items-center md:gap-3.5">
-          <RoundedButton
+          {/* <RoundedButton
             href="https://discord.gg/XzAh8V3S"
             icon={
               <FaDiscord className="text-2xl text-[var(--white-color)] dark:text-[var(--primary-color)]" />
@@ -59,7 +59,7 @@ const ComponentsNavbar = () => {
               <FaGithub className="text-2xl text-[var(--white-color)] dark:text-[var(--primary-color)] " />
             }
             iconInfo={stars || 0}
-          />
+          /> */}
 
           <ThemeSwitcher />
         </div>

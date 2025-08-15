@@ -1,0 +1,192 @@
+---
+title: "Phát hiện khuôn mặt giả mạo (Face Antispoofing)"
+description: "Hướng dẫn tích hợp API Phát hiện khuôn mặt giả mạo để chống lại các hành vi gian lận sử dụng ảnh, video hoặc mô hình 3D."
+---
+
+# Phát hiện khuôn mặt giả mạo
+
+###### Bảo vệ hệ thống khỏi các cuộc tấn công sử dụng ảnh, video hoặc mô hình 3D để giả mạo khuôn mặt.
+
+<Steps>
+
+<Step>Cài đặt thư viện phụ thuộc</Step>
+
+<Cli
+  dependencies={[
+    { label: "npm", command: "npm i axios axios-retry" },
+    { label: "pnpm", command: "pnpm add axios axios-retry" },
+    { label: "bun", command: "bun add axios axios-retry" },
+    { label: "yarn", command: "yarn add axios axios-retry" },
+  ]}
+/>
+
+<Step>Tạo hàm Phát hiện khuôn mặt giả mạo</Step>
+
+<CodeBlock
+code={`export async function detectFAS(
+  source: HTMLImageElement | HTMLVideoElement,
+  canvasRef: HTMLCanvasElement,
+  pingRef: Ref<number>,
+  parameters: Record<string, any>,
+  callback: () => void = () => { }
+): Promise<void> {
+  try {
+    // Tạo canvas để xử lý
+    const canvas = document.createElement("canvas")
+    const width = source instanceof HTMLVideoElement ? source.videoWidth : source.naturalWidth
+    const height = source instanceof HTMLVideoElement ? source.videoHeight : source.naturalHeight
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext("2d")
+    if (!ctx) throw new Error("Không thể lấy context 2D từ canvas")
+    ctx.drawImage(source, 0, 0, width, height)
+
+    // Chuyển sang Blob
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Không thể chuyển canvas sang Blob"))), "image/jpeg")
+    })
+
+    // Cấu hình
+    const config = {
+      "model": "fas", 
+      "conf": parameters.confidenceFaceThreshold.value,
+      "iou": parameters.iouThreshold.value,
+      "max_det": parameters.maxDetections.value,
+      "acc_thres": parameters.accuracyThreshold.value
+    }
+
+    // Gửi yêu cầu
+    const formData = new FormData()
+    formData.append("files", blob, "image.jpg")
+    formData.append("configs", JSON.stringify(config))
+
+    const start = performance.now()
+    const response = await axios.post(URL_PROCESS, formData, { 
+      headers: { 'Content-Type': 'multipart/form-data' } 
+    })
+    const end = performance.now()
+    pingRef.value = Math.round(end - start)
+
+    // Lấy kết quả
+    const task_id = response.data[0]['task_id']
+    const detections = (await fetchTaskResult(task_id)).bbox
+    if (detections) renderDetections(detections, canvasRef)
+
+  } catch (error) {
+    console.error("⚠️ Lỗi phát hiện FAS:", error)
+  } finally {
+    callback()
+  }
+}`}
+language="typescript"
+/>
+
+<Step>Cách sử dụng</Step>
+
+<CodeBlock
+code={`import { detectFAS } from './api/detection'
+
+const handleDetectFAS = async () => {
+  const imageElement = document.getElementById('input-image') as HTMLImageElement
+  const canvasElement = document.getElementById('result-canvas') as HTMLCanvasElement
+  
+  const parameters = {
+    confidenceFaceThreshold: { value: 0.5 },
+    iouThreshold: { value: 0.45 },
+    maxDetections: { value: 10 },
+    accuracyThreshold: { value: 0.7 }
+  }
+
+  await detectFAS(
+    imageElement,
+    canvasElement,
+    pingRef,
+    parameters,
+    () => console.log('Hoàn tất phát hiện FAS')
+  )
+}`}
+language="typescript"
+/>
+
+<Step>Xử lý phát hiện thời gian thực</Step>
+
+<CodeBlock
+code={`import { detectFASonVideo } from './api/detection'
+
+const startRealtimeFAS = () => {
+  const videoElement = document.getElementById('camera-feed') as HTMLVideoElement
+  const canvasElement = document.getElementById('detection-overlay') as HTMLCanvasElement
+  
+  const parameters = {
+    confidenceFaceThreshold: { value: 0.6 },
+    iouThreshold: { value: 0.4 },
+    maxDetections: { value: 5 },
+    accuracyThreshold: { value: 0.8 }
+  }
+
+  // Bắt đầu phát hiện thời gian thực
+  detectFASonVideo(
+    videoElement,
+    canvasElement,
+    pingRef,
+    parameters,
+    undefined, // WebSocket URL (tùy chọn)
+    5, // FPS
+    500 // Thời gian chờ
+  )
+}
+
+// Dừng phát hiện
+const stopRealtimeFAS = () => {
+  stopDetection()
+  closeWebSocket()
+}`}
+language="typescript"
+/>
+
+</Steps>
+
+## Tham số
+
+| Tham số | Kiểu | Mặc định | Mô tả |
+|-----------|------|---------|-------------|
+| `confidenceFaceThreshold` | `number` | `0.5` | Ngưỡng tin cậy để phát hiện khuôn mặt |
+| `iouThreshold` | `number` | `0.45` | Ngưỡng IoU cho Non-Maximum Suppression |
+| `maxDetections` | `number` | `10` | Số lượng phát hiện tối đa trên một ảnh |
+| `accuracyThreshold` | `number` | `0.7` | Ngưỡng độ chính xác để xác định giả mạo |
+
+## Kết quả phát hiện
+
+Face Antispoofing trả về thông tin về các khuôn mặt được phát hiện:
+
+<CodeBlock
+code={`{
+  "bbox": [
+    {
+      "x1": 100, "y1": 50,     // Tọa độ góc trên bên trái
+      "x2": 200, "y2": 150,    // Tọa độ góc dưới bên phải  
+      "confidence": 0.95,      // Độ tin cậy của phát hiện
+      "label": "real",         // "real" hoặc "spoof"
+      "spoof_score": 0.12      // Điểm giả mạo (0-1, càng cao càng giả)
+    }
+  ]
+}`}
+language="json"
+/>
+
+## Ứng dụng
+
+**Hệ thống xác thực:**
+- Xác thực sinh trắc học
+- Kiểm soát truy cập
+- KYC (Know Your Customer)
+
+**Ứng dụng an ninh:**
+- Phát hiện tấn công trình diễn (presentation attack)
+- Chống giả mạo bằng ảnh in
+- Phát hiện mặt nạ 3D
+
+**Ứng dụng di động:**
+- Mở khóa khuôn mặt an toàn
+- Xác thực thanh toán
+- Xác minh ảnh selfie

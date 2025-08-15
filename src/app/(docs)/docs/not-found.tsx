@@ -11,11 +11,11 @@ export default function NotFound() {
             Page not found
           </h1>
           <p className="mt-4 text-gray-500 dark:text-gray-400">
-            The page you are looking for doesn&apos;t exist.
+            Trang bạn đang tìm kiếm không tồn tại.
           </p>
 
           <div className="group mt-6 flex w-full shrink-0 items-center gap-x-3 sm:w-auto">
-            <LinkWithProgress href="/">Take me home</LinkWithProgress>
+            <LinkWithProgress href="/">Quay về trang chủ</LinkWithProgress>
           </div>
         </div>
       </div>

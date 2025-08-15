@@ -46,7 +46,7 @@ const HeroSection = () => {
         {/* content */}
         <div className="flex flex-col items-center gap-y-4 md:gap-y-6 lg::gap-y-7 text-center text-[var(--text-primary-color)]">
           <AnimatedGradientText
-            href="/docs/gradient-button"
+            href="/docs/deepfake-image"
             title={"Giới thiệu tính năng mới: Phát hiện Deepfake"}
             textGradient="bg-[var(--black-color)] dark:bg-gradient-to-r from-[var(--secondary-color)] via-[var(--primary-color)] to-[var(--secondary-color)]"
             borderGradient="bg-gradient-to-r from-[#80EEB4] dark:from-[#80EEB4]/60 via-[#3CA2FA] dark:via-[#3CA2FA]/100 to-[#80EEB4] dark:to-[#80EEB4]/60"
@@ -88,7 +88,7 @@ const HeroSection = () => {
               }}
             >
               <ShadowAnimationButton
-                href={"/docs/installation"}
+                href={"/docs/introduction"}
                 title="Bắt đầu ngay"
               />
             </CollMode>

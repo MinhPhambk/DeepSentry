@@ -26,18 +26,18 @@ const Footer = () => {
           <nav className="space-y-4 max-w-80 flex flex-col">
             <h6 className="font-semibold text-lg">Các sản phẩm</h6>
             <a
-              href="/preview"
+              href="/demo/deepfake"
               target="_blank"
               className="cursor-pointer"
             >
               Phát hiện Deepfake
             </a>
             <a
-              href="/preview"
+              href="/demo/deepfas"
               target="_blank"
               className="cursor-pointer"
             >
-              Phát hiện giả mạo khuôn mặt
+              Phát hiện khuôn mặt giả mạo
             </a>
           </nav>
 
@@ -126,11 +126,11 @@ const navigation = [
   {
     id: 2,
     name: "Phát hiện Deepfake",
-    url: "/preview",
+    url: "/demo/deepfake",
   },
   {
     id: 3,
-    name: "Nâng cấp gói",
+    name: "Bảng giá",
     url: "/billing",
   },
   {

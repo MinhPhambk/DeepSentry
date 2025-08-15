@@ -4,7 +4,7 @@ import {
 } from "@/components/nurui/gridbeam-pricing-page";
 
 export const metadata = {
-  title: "Nâng cấp gói",
+  title: "Bảng giá",
   description:
     "Chọn gói phù hợp với nhu cầu bảo mật của bạn. Phát hiện Deepfake và giả mạo khuôn mặt với công nghệ AI tiên tiến.",
   keywords: [

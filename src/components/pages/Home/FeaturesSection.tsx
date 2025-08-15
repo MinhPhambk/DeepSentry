@@ -28,7 +28,7 @@ const featuresDataOne = [
   {
     name: "Phát hiện Deepfake",
     description: "Phát hiện các video và ảnh Deepfake bằng công nghệ AI tiên tiến.",
-    href: "/",
+    href: "/demo/deepfake",
     className: "col-span-full xl:col-span-2",
     background: (
       <GlowingCardWithBackground 
@@ -39,7 +39,7 @@ const featuresDataOne = [
   {
     name: "Chống giả mạo khuôn mặt",
     description: "Bảo vệ hệ thống của bạn khỏi các cuộc tấn công giả mạo khuôn mặt.",
-    href: "/",
+    href: "/demo/deepfas",
     className: "col-span-full xl:col-span-2",
     background: (
       <GlowingCardWithBackground 

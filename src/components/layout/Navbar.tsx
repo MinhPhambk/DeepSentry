@@ -89,11 +89,11 @@ const navigation = [
   {
     id: 2,
     name: "Phát hiện Deepfake",
-    url: "/preview",
+    url: "/demo/deepfake",
   },
   {
     id: 3,
-    name: "Nâng cấp gói",
+    name: "Bảng giá",
     url: "/billing",
   },
   {

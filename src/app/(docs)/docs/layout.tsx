@@ -23,9 +23,9 @@ const Layout = ({ children }: IChildren) => {
         })}
       >
         <main className="px-6 md:px-12 py-8">{children}</main>
-        <ComponentsFooter />
+        {/* <ComponentsFooter /> */}
       </div>
-      <ComponentsRightSidebar />
+      {/* <ComponentsRightSidebar /> */}
     </div>
   );
 };

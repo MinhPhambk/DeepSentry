@@ -99,12 +99,12 @@ const tabs = [
     tabList: {
       icon: designAnimationData,
       title: "Bảo mật AI đa tầng",
-      description: "Phát hiện deepfake, giả mạo khuôn mặt và malware trong một nền tảng duy nhất.",
+      description: "Phát hiện deepfake và giả mạo khuôn mặt trong một nền tảng duy nhất.",
     },
     Content: {
       heading: "Giải pháp AI bảo mật toàn diện cho nhận diện và phân tích mối đe dọa",
       description:
-        "DeepSentry cung cấp mô-đun AI chuyên biệt để phát hiện deepfake và malware. Hệ thống có thể triển khai tại chỗ hoặc trên cloud, hỗ trợ API/SDK giúp tích hợp nhanh vào quy trình hiện tại của doanh nghiệp.",
+        "DeepSentry cung cấp mô-đun AI chuyên biệt để phát hiện deepfake. Hệ thống có thể triển khai tại chỗ hoặc trên cloud, hỗ trợ API/SDK giúp tích hợp nhanh vào quy trình hiện tại của doanh nghiệp.",
       tabs: [
         {
           id: "real-time-detection",
@@ -158,7 +158,7 @@ const tabs = [
           id: "api-sdk",
           title: "API & SDK",
           content:
-            "Tích hợp AI phát hiện deepfake và malware chỉ với vài dòng code.",
+            "Tích hợp AI phát hiện deepfake chỉ với vài dòng code.",
           items: [
             { icon: <FaCode />, title: "API REST", description: "Gọi API đơn giản và bảo mật." },
             { icon: <FaLaptopCode />, title: "SDK đa nền tảng", description: "Hỗ trợ nhiều ngôn ngữ lập trình." },

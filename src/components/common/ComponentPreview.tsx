@@ -41,8 +41,7 @@ const ComponentPreview = ({
       content: (
         <Preview
           component={DemoComponent}
-          v0ComponentName={v0ComponentName}
-          previewComponentName={previewComponentName}
+          linkdemo={previewComponentName}
         />
       ),
     },

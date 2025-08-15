@@ -1,0 +1,284 @@
+---
+title: "Phát hiện Deepfake Tùy chỉnh cho khuôn mặt"
+description: "Hướng dẫn tích hợp API phát hiện deepfake cho ảnh chứa khuôn mặt."
+---
+
+# Phát hiện Deepfake Tùy chỉnh cho khuôn mặt
+
+###### Sử dụng mô hình tùy chỉnh để phát hiện deepfake với độ chính xác cao cho ảnh chứa khuôn mặt.
+
+<Steps>
+
+<Step>Cài đặt thư viện phụ thuộc</Step>
+
+<Cli
+  dependencies={[
+    { label: "npm", command: "npm i axios axios-retry @msgpack/msgpack" },
+    { label: "pnpm", command: "pnpm add axios axios-retry @msgpack/msgpack" },
+    { label: "bun", command: "bun add axios axios-retry @msgpack/msgpack" },
+    { label: "yarn", command: "yarn add axios axios-retry @msgpack/msgpack" },
+  ]}
+/>
+
+<Step>Tạo hàm Deepfake Tùy chỉnh</Step>
+
+<CodeBlock
+code={`export async function detectDFace(
+  source: HTMLImageElement | HTMLVideoElement,
+  canvasRef: HTMLCanvasElement,
+  pingRef: Ref<number>,
+  detectionRef: Record<string, any>,
+  parameters: Record<string, any>,
+  callback: () => void = () => { }
+): Promise<void> {
+  try {
+    // Tạo canvas để xử lý
+    const canvas = document.createElement("canvas")
+    const width = source instanceof HTMLVideoElement ? source.videoWidth : source.naturalWidth
+    const height = source instanceof HTMLVideoElement ? source.videoHeight : source.naturalHeight
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext("2d")
+    if (!ctx) throw new Error("Không thể lấy context 2D từ canvas")
+    ctx.drawImage(source, 0, 0, width, height)
+
+    // Chuyển sang Blob
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Không thể chuyển canvas sang Blob"))), "image/jpeg")
+    })
+
+    // Chuẩn bị cấu hình cho mô hình tùy chỉnh
+    const config = {
+      "model": "custom",
+      "inp_size": parameters.inpSize.value,
+      "mask_alpha": parameters.alphaBlend.value
+    }
+
+    // Gửi yêu cầu
+    const formData = new FormData()
+    formData.append("files", blob, "image.jpg")
+    formData.append("configs", JSON.stringify(config))
+
+    const start = performance.now()
+    const response = await axios.post(URL_PROCESS, formData, { 
+      headers: { 'Content-Type': 'multipart/form-data' } 
+    })
+    const end = performance.now()
+    pingRef.value = Math.round(end - start)
+
+    // Lấy kết quả
+    const task_id = response.data[0]['task_id']
+    const result = (await fetchTaskResult(task_id))
+    const detections = result.bbox
+    detectionRef.value = detections
+    
+    if (detections) renderDetectionsDeepFace(detections, canvasRef)
+    if (result) renderMask(result, canvasRef)
+
+  } catch (error) {
+    console.error("⚠️ Lỗi phát hiện tùy chỉnh:", error)
+  } finally {
+    callback()
+  }
+}`}
+language="typescript"
+/>
+
+<Step>Cách sử dụng cơ bản</Step>
+
+<CodeBlock
+code={`import { detectDFace } from './api/detection'
+
+const handleDetectDFace = async () => {
+  const imageElement = document.getElementById('input-image') as HTMLImageElement
+  const canvasElement = document.getElementById('result-canvas') as HTMLCanvasElement
+  
+  const parameters = {
+    inpSize: { value: 512 },
+    alphaBlend: { value: 0.6 }
+  }
+
+  const detectionRef = ref({})
+
+  await detectDFace(
+    imageElement,
+    canvasElement,
+    pingRef,
+    detectionRef,
+    parameters,
+    () => {
+      console.log('Hoàn tất phát hiện tùy chỉnh')
+      console.log('Kết quả phát hiện:', detectionRef.value)
+    }
+  )
+}`}
+language="typescript"
+/>
+
+<Step>Xử lý kết quả chi tiết</Step>
+
+<CodeBlock
+code={`// Hàm xử lý kết quả phát hiện tùy chỉnh
+const processCustomResults = (detections: any) => {
+  if (!detections || !detections.length) {
+    console.log('Không phát hiện được khuôn mặt')
+    return
+  }
+
+  detections.forEach((detection: any, index: number) => {
+    const { x1, y1, x2, y2, confidence, manipulation_score } = detection
+    
+    console.log(\`Phát hiện \${index + 1}:\`)
+    console.log(\`- Vị trí: (\${x1}, \${y1}) -> (\${x2}, \${y2})\`)
+    console.log(\`- Độ tin cậy: \${(confidence * 100).toFixed(2)}%\`)
+    console.log(\`- Điểm giả mạo: \${(manipulation_score * 100).toFixed(2)}%\`)
+    
+    if (manipulation_score > 0.7) {
+      console.warn(\`⚠️ Nguy cơ giả mạo cao tại vùng \${index + 1}\`)
+    }
+  })
+}
+
+// Sử dụng trong callback
+await detectDFace(
+  imageElement,
+  canvasElement,
+  pingRef,
+  detectionRef,
+  parameters,
+  () => processCustomResults(detectionRef.value)
+)`}
+language="typescript"
+/>
+
+<Step>Cấu hình nâng cao</Step>
+
+<CodeBlock
+code={`// Cấu hình nâng cao cho mô hình tùy chỉnh
+const advancedParameters = {
+  inpSize: { value: 512 },        // Kích thước input cao hơn
+  alphaBlend: { value: 0.4 },     // Mask trong suốt hơn
+  sensitivity: { value: 0.8 },    // Độ nhạy phát hiện
+}
+
+// Hàm render tùy chỉnh
+const customRenderDetections = (detections: any[], canvas: HTMLCanvasElement) => {
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  detections.forEach((det, idx) => {
+    const { x1, y1, x2, y2, manipulation_score } = det
+    
+    // Màu dựa trên mức độ giả mạo
+    const intensity = Math.min(manipulation_score * 255, 255)
+    ctx.strokeStyle = \`rgb(\${intensity}, \${255 - intensity}, 0)\`
+    ctx.lineWidth = 3
+    
+    // Vẽ bounding box
+    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1)
+    
+    // Vẽ nhãn
+    ctx.fillStyle = ctx.strokeStyle
+    ctx.font = '14px Arial'
+    ctx.fillText(
+      \`Giả mạo: \${(manipulation_score * 100).toFixed(1)}%\`,
+      x1, y1 - 5
+    )
+  })
+}`}
+language="typescript"
+/>
+
+</Steps>
+
+## Tham số
+
+| Tham số | Kiểu | Mặc định | Mô tả |
+|-----------|------|---------|-------------|
+| `inpSize` | `number` | `512` | Kích thước input cho mô hình tùy chỉnh |
+| `alphaBlend` | `number` | `0.6` | Độ trong suốt của mask (0.0 - 1.0) |
+| `sensitivity` | `number` | `0.8` | Độ nhạy phát hiện giả mạo |
+
+## Kết quả trả về từ mô hình tùy chỉnh
+
+<CodeBlock
+code={`{
+  "bbox": [
+    {
+      "x1": 120, "y1": 80,
+      "x2": 220, "y2": 180,
+      "confidence": 0.94,
+      "manipulation_score": 0.87,    // Điểm giả mạo tổng thể
+      "manipulation_type": "face_swap", // Loại giả mạo
+      "artifacts": [                 // Các lỗi phát hiện được
+        "compression_artifacts",
+        "blending_inconsistencies"
+      ]
+    }
+  ],
+  "mask": "base64...",              // Mask chi tiết
+  "heatmap": "base64...",           // Heatmap giả mạo
+  "confidence_map": "base64..."     // Bản đồ độ tin cậy
+}`}
+language="json"
+/>
+
+## Ứng dụng
+
+**Phân tích pháp y số:**
+- Điều tra pháp y
+- Xác thực bằng chứng
+- Phân tích video tòa án
+
+**Xác thực truyền thông:**
+- Kiểm tra tin tức
+- Xác minh nội dung
+- Chống tin giả
+
+**Nghiên cứu:**
+- Nghiên cứu đạo đức AI
+- Đánh giá benchmark
+- Xác thực tập dữ liệu
+
+**Bảo mật doanh nghiệp:**
+- Bảo vệ doanh nghiệp
+- Ngăn chặn gian lận nâng cao
+- Kiểm tra tuân thủ
+
+## Mẹo nâng cao
+
+<CodeBlock
+code={`// Xử lý hàng loạt ảnh
+const processBatch = async (images: HTMLImageElement[]) => {
+  const results = []
+  
+  for (const image of images) {
+    const detectionRef = ref({})
+    await detectDFace(image, canvas, pingRef, detectionRef, parameters)
+    results.push(detectionRef.value)
+  }
+  
+  return results
+}
+
+// Giám sát hiệu suất
+const performanceMetrics = {
+  processingTime: 0,
+  accuracy: 0,
+  throughput: 0
+}
+
+// Xử lý lỗi với retry
+const detectWithRetry = async (maxRetries = 3) => {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      await detectDFace(/* parameters */)
+      break
+    } catch (error) {
+      if (i === maxRetries - 1) throw error
+      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)))
+    }
+  }
+}`}
+language="typescript"
+/>

@@ -52,7 +52,7 @@ const ComponentsLeftSidebar = () => {
 
           <div className="text-sm px-2 space-y-1">
             <p className="text-black dark:text-[var(--black-color-4)] pl-2.5 uppercase">
-              {sideBar && "others"}
+              {sideBar && "Thông tin khác"}
             </p>
             {navigation?.slice(navigation?.length - 1).map((nav, index) => (
               <MenuItem

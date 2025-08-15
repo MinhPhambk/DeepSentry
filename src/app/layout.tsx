@@ -11,7 +11,6 @@ import MainContent from "../components/common/MainContent";
 import { AppProvider } from "@/context/AppContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-// import Banner from "@/components/ui/Banner";
 import SplashCursorDemo from "@/components/common/SplashCursorDemo";
 
 const nunito = Nunito({
@@ -34,7 +33,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       ],
     },
     description:
-      "Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
+      "DeepSentry - Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
     applicationName: "DeepSentry",
     creator: "Pham Ngoc Minh",
     authors: [
@@ -44,6 +43,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       },
     ],
     keywords: [
+      "DeepSentry",
       "Phát hiện Deepfake",
       "Bảo mật AI",
       "Chống giả mạo khuôn mặt",
@@ -54,7 +54,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     openGraph: {
       title: "DeepSentry",
       description:
-        "Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
+        "DeepSentry - Nền tảng bảo mật ứng dụng trí tuệ nhân tạo cho phát hiện Deepfake, với các mô hình huấn luyện sẵn, tích hợp API và suy luận thời gian thực.",
       url: "deepsentry.cloud",
     },
   };
@@ -67,6 +67,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+      </head>
       <body
         className={`${nunito.variable} antialiased bg-[var(--background-color)] flex flex-col min-h-screen font-nunito`}
       >

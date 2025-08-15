@@ -1,60 +1,127 @@
 ---
-title: Installation
-description: How to install dependencies and structure your app with nurui.
+title: "Hướng dẫn cài đặt"
+description: "Hướng dẫn cài đặt giao diện và cấu hình cơ bản hệ thống DeepSentry."
 ---
 
-# Installation
+# Hướng dẫn cài đặt
 
-###### Learn how to install nurui components and set up your project.
+###### Làm theo các bước dưới đây để cài đặt giao diện và cấu hình cơ bản hệ thống DeepSentry.
 
 <Steps>
 
-<Step>Optional: Components list</Step>
+<Step>Cài đặt các công cụ cần thiết</Step>
 
-To see the full `list` of available components you can install:
+Trước khi bắt đầu, hãy đảm bảo máy tính của bạn đã cài đặt các công cụ sau:
 
-<Cli
-  dependencies={[
-    { label: "npm", command: "npx nurui list" },
-    { label: "pnpm", command: "pnpm dlx nurui list" },
-    { label: "bun", command: "bunx nurui list" },
-    { label: "yarn", command: "yarn dlx nurui list" },
-  ]}
-/>
-
-This will display all the components supported by nurui.
-
-<Step>Add Components</Step>
-
-You can now start adding components to your project.
-
-<Cli
-  dependencies={[
-    { label: "npm", command: "npx nurui add gradient-button" },
-    { label: "pnpm", command: "pnpm dlx nurui add gradient-button" },
-    { label: "bun", command: "bunx nurui add gradient-button" },
-    { label: "yarn", command: "yarn dlx nurui add gradient-button" },
-  ]}
-/>
-
-This will generate the component in: `components/nurui/GradientButton.tsx`
-
-<Step>Import and use the component</Step>
-
-The command above will add the `GradientButton` component to your project. You can then import it like this:
+**Node.js và npm:**
+- Tải và cài đặt Node.js (phiên bản 16.x trở lên) từ [nodejs.org](https://nodejs.org/)
+- npm sẽ được cài đặt tự động cùng với Node.js
+- Kiểm tra phiên bản đã cài đặt:
 
 <CodeBlock
-code={`import { GradientButton } from "@/components/nurui/GradientButton";
-
-export default function Home() {
-  return (
-    <div>
-      <GradientButton />
-    </div>
-  );
-}`}
+code={`node --version
+npm --version`}
+language="bash"
 />
 
-<Step>Update the import paths to fit your project setup</Step>
+**Yarn (tùy chọn):**
+Nếu bạn muốn sử dụng Yarn thay vì npm:
+
+<Cli
+ dependencies={[
+   { label: "npm", command: "npm install -g yarn" },
+ ]}
+/>
+
+**Git:**
+- Tải và cài đặt Git từ [git-scm.com](https://git-scm.com/)
+- Cấu hình Git với thông tin cá nhân:
+
+<CodeBlock
+code={`git config --global user.name "Tên của bạn"
+git config --global user.email "email@example.com"`}
+language="bash"
+/>
+
+**Postman (tùy chọn):**
+- Tải và cài đặt Postman từ [postman.com](https://www.postman.com/) để test API backend
+- Hoặc sử dụng các công cụ khác như Thunder Client (VS Code extension), Insomnia, hoặc curl
+
+<Step>Clone repository từ GitHub</Step>
+
+Bắt đầu bằng việc clone source code từ GitHub repository:
+
+<CodeBlock
+code={`git clone https://github.com/MinhPhambk/DeepSentry.git
+cd DeepSentry`}
+language="bash"
+/>
+
+<Step>Cài đặt dependencies</Step>
+
+Cài đặt các package dependencies cần thiết cho dự án:
+
+<Cli
+ dependencies={[
+   { label: "yarn", command: "yarn install" },
+   { label: "npm", command: "npm install" },
+ ]}
+/>
+
+<Step>Cấu hình biến môi trường</Step>
+
+Tạo file `.env` trong thư mục gốc của dự án và cấu hình các biến môi trường:
+
+<CodeBlock
+code={`NODE_ENV="development"
+SITE_LINK=https://minhphambk.github.io/DeepSentry
+BACKEND_URL=https://812a-42-112-211-165.ngrok-free.app`}
+language="env"
+/>
+
+<Step>Chạy ứng dụng ở chế độ development</Step>
+
+Khởi động ứng dụng trong môi trường phát triển:
+
+<Cli
+ dependencies={[
+   { label: "yarn", command: "yarn dev" },
+   { label: "npm", command: "npm run dev" },
+ ]}
+/>
+
+Ứng dụng sẽ chạy tại `http://localhost:3000` (hoặc port khác nếu được chỉ định).
+
+<Step>Triển khai ứng dụng</Step>
+
+Để deploy ứng dụng lên production:
+
+<Cli
+ dependencies={[
+   { label: "yarn", command: "yarn deploy" },
+   { label: "npm", command: "npm run deploy" },
+ ]}
+/>
+
+<Step>Cấu hình backend cơ bản</Step>
+
+Hiện tại, backend không cho phép truy cập trực tiếp mã nguồn. Tuy nhiên, bạn có thể gọi API do chúng tôi cung cấp qua địa chỉ ngrok:
+
+<CodeBlock
+code={`https://812a-42-112-211-165.ngrok-free.app`}
+language="text"
+/>
+
+> **Lưu ý:** Đảm bảo rằng biến `BACKEND_URL` trong file `.env` đã được đặt chính xác để frontend có thể gọi API này.
 
 </Steps>
+
+## Xác minh cài đặt
+
+Sau khi hoàn thành các bước trên, bạn có thể kiểm tra xem hệ thống đã hoạt động đúng bằng cách:
+
+- Truy cập vào ứng dụng qua browser tại `http://localhost:3000`
+- Kiểm tra console để đảm bảo không có lỗi
+- Thử nghiệm các chức năng cơ bản của DeepSentry
+
+### Test Backend API với Postman

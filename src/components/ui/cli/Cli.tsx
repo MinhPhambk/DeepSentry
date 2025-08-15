@@ -27,16 +27,16 @@ const commands = [
     icon: <NpmIcon />,
     code: `npx nurui add`,
   },
-  {
-    label: "pnpm",
-    icon: <PnpmIcon />,
-    code: `pnpm dlx nurui add`,
-  },
-  {
-    label: "bun",
-    icon: <BunIcon />,
-    code: `bunx nurui add`,
-  },
+  // {
+  //   label: "pnpm",
+  //   icon: <PnpmIcon />,
+  //   code: `pnpm dlx nurui add`,
+  // },
+  // {
+  //   label: "bun",
+  //   icon: <BunIcon />,
+  //   code: `bunx nurui add`,
+  // },
   {
     label: "yarn",
     icon: <YarnIcon />,
